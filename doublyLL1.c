@@ -8,7 +8,8 @@ typedef struct dlist
     struct dlist *next; 
 }node;
 
-node *insf(node *head,int data){
+//this func will insert a node at the beginning of the list...
+node *insFront(node *head,int data){
     node *ptr= (node*)malloc(sizeof(node ));
     ptr->prev=NULL;
     ptr->next= head;
@@ -17,7 +18,8 @@ node *insf(node *head,int data){
     return ptr;
 }
 
-node *insE(node *head,int data){
+//this func will inert a node at the end of the list..
+node *insEnd(node *head,int data){
     node *ptrr= (node *)malloc(sizeof(node));
     node *p= head;
 
@@ -33,7 +35,8 @@ node *insE(node *head,int data){
     return head;
 }
 
-node *insB(node *head,int data,int index){
+//this func will insert a node after the given index...
+node *insBetween(node *head,int data,int index){
     node *pptr=(node *)malloc(sizeof(node));
     node *pp= head;
 int i=0;
@@ -51,6 +54,7 @@ pptr->prev=pp;
 return head;
 }
 
+//print the list...
 void traverse(node *head){
     while (head != NULL)
     {
@@ -59,16 +63,6 @@ void traverse(node *head){
     }
     printf("\n");
 }
-
-/* This method can only be used for singly self defined
-linked lists */ 
-// void Preverse(node *ptr){
-// while (ptr != NULL)
-//     {
-//         printf("%d-->",ptr->data);
-//         ptr=ptr->prev;
-//     }
-// }
 
 int main(int argc, char const *argv[]){
     //creating 3 nodes
@@ -92,10 +86,10 @@ int main(int argc, char const *argv[]){
     trd->prev=sec;
     trd->next= NULL;
 
-head= insf(head,20);
-head= insB(head,25,2);
-head= insE(head,22);
+head= insFront(head,20);
+head= insBetween(head,25,2);
+head= insEnd(head,22);
  traverse(head);  //the first node 
- //Preverse(trd);
+
  return 0;
 }
